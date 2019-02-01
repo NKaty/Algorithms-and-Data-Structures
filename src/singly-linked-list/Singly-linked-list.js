@@ -171,6 +171,26 @@ class SinglyLinkedList {
     return removedNode;
   }
 
+  find(compareTo, returnIndex = false) {
+    if (!this.head) return undefined;
+
+    let currentNode = this.head;
+    let index = 0;
+
+    while (currentNode) {
+      if (typeof compareTo === 'function' && compareTo(currentNode.data)) {
+        return returnIndex ? index : currentNode;
+      } else if (typeof compareTo !== 'function' && currentNode.data === compareTo) {
+        return returnIndex ? index : currentNode;
+      }
+
+      currentNode = currentNode.next;
+      index++;
+    }
+
+    return undefined;
+  }
+
   reverse() {
     let currentNode = this.head;
     let nextNode = currentNode.next;
@@ -207,37 +227,47 @@ class SinglyLinkedList {
     return this;
   }
 
-  print() {
+  iterate(cb = null) {
     const arr = [];
     let currentNode = this.head;
 
     while (currentNode) {
-      arr.push(currentNode.data);
+      if (typeof cb === 'function') arr.push(cb(currentNode.data));
+      else arr.push(currentNode.data);
       currentNode = currentNode.next;
     }
 
-    console.log(arr);
+    return arr;
+  }
+
+  print() {
+    console.log(this.iterate());
   }
 }
 
-const singlyLinkedList = new SinglyLinkedList();
+if (module.parent) {
+  module.exports = SinglyLinkedList;
+} else {
+  const singlyLinkedList = new SinglyLinkedList();
 
-singlyLinkedList.push(5).push(10).push(15).push(20).push(25).push(30);
-singlyLinkedList.print(); // [ 5, 10, 15, 20, 25, 30 ]
-singlyLinkedList.pop();
-singlyLinkedList.print(); // [ 5, 10, 15, 20, 25 ]
-singlyLinkedList.unshift(1);
-singlyLinkedList.print(); // [ 1, 5, 10, 15, 20, 25 ]
-singlyLinkedList.shift();
-singlyLinkedList.print(); // [ 5, 10, 15, 20, 25 ]
-console.log(singlyLinkedList.get(2).data); // 15
-singlyLinkedList.set(2, 100);
-console.log(singlyLinkedList.get(2).data); // 100
-singlyLinkedList.insert(3, 10000);
-singlyLinkedList.print(); // [ 5, 10, 100, 10000, 20, 25 ]
-singlyLinkedList.remove(3);
-singlyLinkedList.print(); // [ 5, 10, 100, 20, 25 ]
-singlyLinkedList.reverse();
-singlyLinkedList.print(); // [ 25, 20, 100, 10, 5 ]
-singlyLinkedList.rotate(-2);
-singlyLinkedList.print(); // [ 10, 5, 25, 20, 100 ]
+  singlyLinkedList.push(5).push(10).push(15).push(20).push(25).push(30);
+  singlyLinkedList.print(); // [ 5, 10, 15, 20, 25, 30 ]
+  singlyLinkedList.pop();
+  singlyLinkedList.print(); // [ 5, 10, 15, 20, 25 ]
+  singlyLinkedList.unshift(1);
+  singlyLinkedList.print(); // [ 1, 5, 10, 15, 20, 25 ]
+  singlyLinkedList.shift();
+  singlyLinkedList.print(); // [ 5, 10, 15, 20, 25 ]
+  console.log(singlyLinkedList.get(2).data); // 15
+  singlyLinkedList.set(2, 100);
+  console.log(singlyLinkedList.get(2).data); // 100
+  singlyLinkedList.insert(3, 10000);
+  singlyLinkedList.print(); // [ 5, 10, 100, 10000, 20, 25 ]
+  singlyLinkedList.remove(3);
+  singlyLinkedList.print(); // [ 5, 10, 100, 20, 25 ]
+  singlyLinkedList.reverse();
+  singlyLinkedList.print(); // [ 25, 20, 100, 10, 5 ]
+  singlyLinkedList.rotate(-2);
+  singlyLinkedList.print(); // [ 10, 5, 25, 20, 100 ]
+  console.log(singlyLinkedList.find(25, true)); // 2
+}
