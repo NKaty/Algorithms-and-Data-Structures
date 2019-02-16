@@ -5,8 +5,7 @@
 // push - takes in a node and puts it at the top of the stack.
 // Should return the new size of the stack.
 
-// pop - removes the node at the top of the stack
-// and returns the value of that node.
+// pop - removes the node at the top of the stack and returns the value of that node.
 
 const StackNode = require('./Stack-node');
 

@@ -1,4 +1,4 @@
-// Binary Search Tree
+// Binary Search Tree - recursive version
 
 // Write a function on the BinarySearchTree class
 
@@ -38,6 +38,10 @@
 // depthFirstSearchInOrder
 // This function should search through each node in the binary search tree using
 // in-order depth first search and return an array containing each node's value.
+
+// Additionally, the following methods are implemented on the class:
+// getHeight - returns the height of the tree
+// findMin/Max - returns node with min/max value in the binary tree
 
 const BinarySearchTreeNode = require('./Binary-search-tree-node');
 
@@ -130,6 +134,7 @@ class BinarySearchTree {
     if (data < currentNode.data) {
       return this.findNodeWithParent(data, currentNode.left, currentNode);
     }
+
     if (data > currentNode.data) {
       return this.findNodeWithParent(data, currentNode.right, currentNode);
     }

@@ -2,6 +2,8 @@
 // Write a function called binarySearch which accepts a sorted array and
 // a value and returns the index at which the value exists. Otherwise, return -1.
 
+// Time Complexity - O(log n)
+
 function binarySearch(arr, val) {
   let left = 0;
   let right = arr.length - 1;

@@ -1,9 +1,10 @@
-// Binary Search Tree
+// Binary Search Tree - iterative version
 
 // Write a function on the BinarySearchTree class
 
-// insert - accepts a value and inserts it into the BST in the correct position.
-// The function should return the binary search tree.
+// insert
+// This function should accept a value and insert it into the BST in the correct
+// position. It should return the binary search tree.
 
 // find
 // This function should find a node in a binary tree. It should return the node
@@ -38,6 +39,10 @@
 // depthFirstSearchInOrder
 // This function should search through each node in the binary search tree using
 // in-order depth first search and return an array containing each node's value.
+
+// Additionally, the following methods are implemented on the class:
+// getHeight - returns the height of the tree
+// findMin/Max - returns node with min/max value in the binary tree
 
 const BinarySearchTreeNode = require('./Binary-search-tree-node');
 const Queue = require('../queue/Queue');

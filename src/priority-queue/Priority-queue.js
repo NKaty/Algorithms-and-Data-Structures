@@ -1,6 +1,6 @@
 // Priority Queue
 
-// Implement Priority Queue with Min Binary Heap:
+// Implement Priority Queue with Min Binary Heap
 // Each Node has a value and a priority.  Use the priority to build the heap.
 
 // enqueue
@@ -9,6 +9,9 @@
 
 // dequeue
 // This method removes root element, returns it, and rearranges heap using priority.
+
+// Additionally, the following method is implemented on the class:
+// changePriority - changes priority of node
 
 const PriorityQueueNode = require('./Priority-queue-node');
 const MinBinaryHeap = require('../binary-heap/Min-binary-heap');

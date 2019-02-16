@@ -6,8 +6,10 @@ function collectStrings (obj) {
   let resultArr = [];
 
   for (let key in obj) {
-    if (typeof obj[key] === 'string') resultArr.push(obj[key]);
-    if (typeof obj[key] === 'object') resultArr = resultArr.concat(collectStrings(obj[key]));
+    if (obj.hasOwnProperty(key)) {
+      if (typeof obj[key] === 'string') resultArr.push(obj[key]);
+      if (typeof obj[key] === 'object') resultArr = resultArr.concat(collectStrings(obj[key]));
+    }
   }
 
   return resultArr;

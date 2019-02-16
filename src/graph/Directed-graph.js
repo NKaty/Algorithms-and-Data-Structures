@@ -14,6 +14,17 @@
 // hasCycle
 // This function should return true if the graph contains a cycle or false if not.
 
+// Additionally, the following methods are implemented on the class:
+// breadthFirstSearchForAllVertices - returns an array of all vertices
+// visited using BFS regardless of the vertex to start with
+
+// depthFirstSearchForAllVertices - returns an array of all vertices
+// visited using DFS regardless of the vertex to start with
+
+// topologicalSort - returns an array of vertices in a specific order, based on
+// the interconnectedness of the edges. For two vertices x and y and a directed edge (x, y),
+// the vertex x is ordered to come before the vertex y.
+
 const Graph = require('./Graph');
 const Queue = require('../queue/Queue');
 

@@ -1,7 +1,8 @@
 // Insertion Sort Comparator
+
 // Implement insertionSort.
-// Given an array, both algorithms will sort the values in the array.
-// The functions take 2 parameters: an array and an optional comparator function.
+// Given an array, insertionSort will sort the values in the array.
+// The function take 2 parameters: an array and an optional comparator function.
 // The comparator function is a callback that will take two values from the array to be compared.
 // The function returns a negative value if the first value is less than the second,
 // a positive value if the first value is greater than the second,

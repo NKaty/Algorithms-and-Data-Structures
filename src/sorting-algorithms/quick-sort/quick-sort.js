@@ -1,5 +1,5 @@
 // Quick sort
-// Quick sort is an O(nlog(n)) algorithm (Worst case - O(n^2).
+// Quick sort is an O(n * log(n)) algorithm (Worst case - O(n^2).
 // Pivot is always the first element
 
 function pivot(arr, start = 0, end = arr.length - 1) {

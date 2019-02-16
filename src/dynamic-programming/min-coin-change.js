@@ -1,6 +1,7 @@
 // Write a function called minCoinChange which accepts two parameters:
 // an array of coins and a amount. The function should return
 // the minimum number of coins needed to make the change.
+// Use Dynamic Programming approach and greedy algorithm.
 
 // Brute Force
 // Time Complexity exponential

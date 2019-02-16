@@ -1,8 +1,8 @@
 // Frequency Counter - areThereDuplicates
-// Implement a function called, areThereDuplicates which accepts a variable number of arguments,
+// Implement a function called areThereDuplicates which accepts a variable number of arguments,
 // and checks whether there are any duplicates among the arguments passed in.
 
-// Restrictions: Time - O(n), Space - O(n)
+// Restrictions: Time Complexity - O(n), Space Complexity - O(n)
 
 function areThereDuplicates(...args) {
   if (!args.length) return false;

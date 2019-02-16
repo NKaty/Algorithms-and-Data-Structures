@@ -30,6 +30,20 @@
 // This function should return an object with two properties, the first being
 // the total distance and the second an array of nodes which create the shortest path.
 
+// Additionally, the following methods are implemented on the class:
+// findShortestDistance - finds shortest path from source to destination,
+// returns an object with two properties, the first being the shortest path length
+// and the second an array of nodes which create the shortest path.
+// Method uses Breath First Search algorithm.
+
+// travelingSalesmanProblemBF - finds the shortest possible route that visits
+// every vertex exactly once and returns to the starting point.
+// Brute Force approach - Time Complexity O(n!)
+
+// travelingSalesmanProblemDP - finds the shortest possible route that visits
+// every vertex exactly once and returns to the starting point.
+// Dynamic programming approach (top-down - memoization) - Time complexity O(2^n * n^2)
+
 const Queue = require('../queue/Queue');
 const Stack = require('../stack/Stack');
 const PriorityQueue = require('../priority-queue/Priority-queue');
@@ -290,7 +304,7 @@ class Graph {
   }
 
   // Traveling Salesman Problem
-  // Using dynamic programming (top-down approach - memoization)
+  // Dynamic programming approach (top-down approach - memoization)
   travelingSalesmanProblemDP(vertex) {
     const vertices = Object.keys(this.adjacencyList);
     const numberOfVertices = vertices.length;

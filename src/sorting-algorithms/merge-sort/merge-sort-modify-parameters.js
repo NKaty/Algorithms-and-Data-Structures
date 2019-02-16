@@ -1,5 +1,5 @@
 // Merge sort (merge function modifies passed parameters)
-// Merge sort is an O(nlog(n)) algorithm.
+// Merge sort is an O(n * log(n)) algorithm.
 
 function mergeSort(arr) {
   if (arr.length <= 1) return arr;

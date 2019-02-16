@@ -15,8 +15,12 @@
 // Should return the values property on the heap.
 
 // heapSort
-// This function should sort array with Time complexity O(nlogn) and
+// This function should sort array with Time complexity O(n * log n) and
 // Space complexity O(1). Should return the values property on the heap.
+
+// Additionally, the following methods are implemented on the class:
+// find - returns an array of indexes of items with the given value
+// remove - removes all items with the given value
 
 class BinaryHeap {
   constructor() {

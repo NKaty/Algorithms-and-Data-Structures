@@ -7,8 +7,10 @@ function stringifyNumbers(obj) {
   const newObj = Object.assign({}, obj);
 
   for (let key in newObj) {
-    if (typeof newObj[key] === 'number') newObj[key] = newObj[key].toString();
-    if (typeof newObj[key] === 'object') newObj[key] = stringifyNumbers(newObj[key]);
+    if (newObj.hasOwnProperty(key)) {
+      if (typeof newObj[key] === 'number') newObj[key] = newObj[key].toString();
+      if (typeof newObj[key] === 'object') newObj[key] = stringifyNumbers(newObj[key]);
+    }
   }
 
   return newObj;
@@ -27,7 +29,6 @@ let obj = {
 };
 
 console.log(stringifyNumbers(obj));
-
 // { num: '1',
 //   test: {},
 //   data: { val: '4', info: { isRight: true, random: '66' } } }

@@ -4,8 +4,8 @@
 // if the pair exists or false if it does not.
 
 // Solve this with the following requirements:
-// Time Complexity Requirement - O(n)
-// Space Complexity Requirement - O(n)
+// Time Complexity - O(n)
+// Space Complexity - O(n)
 
 function findPair(arr, num) {
   const obj = {};

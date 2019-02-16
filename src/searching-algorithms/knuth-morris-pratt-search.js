@@ -1,4 +1,7 @@
 // Knuth-Morris-Pratt algorithm
+// Write a function which accepts a string and a pattern, and returns the index
+// at which the value exists. If the pattern does not exist in the string, return -1.
+
 // Time Complexity - O(n + m)
 // Space complexity - O(n)
 

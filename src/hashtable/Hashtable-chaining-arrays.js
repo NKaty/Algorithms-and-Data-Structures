@@ -1,4 +1,4 @@
-// Hashtable
+// Hashtable - implementation using an array
 
 // Implement the following on the Hashtable class:
 
@@ -18,6 +18,9 @@
 // This function should loop through the hash table array and return an array
 // of values in the table.
 
+// Additionally, the following method is implemented on the class:
+// delete - accepts a key, removes the key-value pair from the hash table
+
 class Hashtable {
   constructor (size = 53) {
     this.keyMap = new Array(size);
@@ -26,11 +29,13 @@ class Hashtable {
   hash(key) {
     let hash = 0;
     let WEIRD_PRIME = 31;
+
     for (let i = 0; i < Math.min(key.length, 100); i++) {
       let char = key[i];
       let value = char.charCodeAt(0) - 96;
       hash = (hash * WEIRD_PRIME + value) % this.keyMap.length;
     }
+
     return hash;
   }
 

@@ -18,7 +18,7 @@
 // and all values greater than the pivot wind up to the right of it.
 // It's also helpful if this helper returns the index of where the pivot value winds up.
 // Hint: When we get to Quick Sort function, it will be helpful for the pivot helper
-// to accept not only an array an an optional comparator,
+// to accept not only an array and an optional comparator,
 // but also an optional start and end index.
 // These should default to 0 and the array length minus 1, respectively.
 

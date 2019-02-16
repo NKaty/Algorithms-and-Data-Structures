@@ -1,7 +1,6 @@
 // Stack with 2 Queues
 
 // Implement a stack using two queues:
-// You should implement the following functions:
 // - push (returns the stack)
 // - pop (returns the value popped)
 

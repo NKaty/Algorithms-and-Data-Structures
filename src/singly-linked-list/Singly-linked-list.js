@@ -49,6 +49,15 @@
 // Time Complexity: O(N), where N is the length of the list.
 // Space Complexity: O(1)
 
+// Additionally, the following methods are implemented on the class:
+// find - accepts a parameter compareTo which can be a value for comparison or
+// a comparison function (must return true or false for each node), returns
+// the found node or its index.
+
+// iterate - accepts a callback function as a parameter, iterates through each node
+// in the list applying the callback function, returns array of values returned from
+// the callback function
+
 const SinglyLinkedListNode = require('./Singly-linked-list-node');
 
 class SinglyLinkedList {

@@ -4,8 +4,8 @@
 // if the pair exists or false if it does not.
 
 // Solve this with the following requirements:
-// Time Complexity Requirement - O(n log n)
-// Space Complexity Requirement - O(1)
+// Time Complexity - O(n log n)
+// Space Complexity - O(1)
 
 function findPair(arr, num) {
   arr.sort((a, b) => a - b);

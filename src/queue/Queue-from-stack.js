@@ -1,7 +1,6 @@
 // Queue with 2 stacks
 
 // Implement the following operations of a queue using two stacks:
-// You should implement the following functions:
 // - enqueue (returns the queue)
 // - dequeue  (returns the dequeue value)
 

@@ -2,7 +2,6 @@
 // Insertion sort is an O(n^2) algorithm.
 
 // Using swap
-
 function insertionSortSwap(arr) {
   for (let i = 0; i < arr.length - 1; i++) {
     for (let j = i + 1; j > 0; j--) {
@@ -19,7 +18,6 @@ console.log(insertionSortSwap(nums)); // [2, 3, 3, 4, 4, 4, 5, 23, 32, 32, 34, 3
 console.log(insertionSortSwap([0, -10, 7, 4])); // [-10, 0, 4, 7]
 
 // Using auxiliary variable
-
 function insertionSortVariable(arr) {
   for (let i = 1; i < arr.length; i++) {
     let current = arr[i];
