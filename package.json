@@ -1,8 +1,12 @@
 {
   "name": "algorithms-and-data-structures",
   "version": "1.0.0",
-  "description": "",
+  "description": "Implementation of Algorithms and Data Structures on JavaScript",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NKaty/Algorithms-and-Data-Structures.git"
+  },
   "scripts": {
     "lint": "eslint ./src/*"
   },
