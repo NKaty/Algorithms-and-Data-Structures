@@ -35,3 +35,5 @@ This repo contains solutions to Colt Steele's JavaScript Algorithms and Data Str
     - [Graph](src/data-structures/graph)
     - [Trie](src/data-structures/trie)
 - [Dynamic Programming](src/dynamic-programming)
+- [Other algorithms](src/other-algorithms)
+    - [Factorial of large number](src/other-algorithms/factorial-of-large-number.js)
