@@ -42,6 +42,8 @@
 // Additionally, the following methods are implemented on the class:
 // getHeight - returns the height of the tree
 // findMin/Max - returns node with min/max value in the binary tree
+// invert - invert the current tree structure (produce a tree that is equivalently
+// the mirror image of the current tree)
 
 const BinarySearchTreeNode = require('./Binary-search-tree-node');
 
@@ -126,6 +128,16 @@ class BinarySearchTree {
     if (!node.right) return node.left ? this.findMax(node.left) : parent;
 
     return this.findSecondLargest(node.right, node);
+  }
+
+  invert(node = this.root) {
+    if (!node) return null;
+    if (node.left) this.invert(node.left);
+    if (node.right) this.invert(node.right);
+
+    [node.left, node.right] = [node.right, node.left];
+
+    return node;
   }
 
   findNodeWithParent(data, currentNode = this.root, parentNode = null) {
@@ -280,3 +292,5 @@ console.log(binarySearchTree2.depthFirstSearchPostOrder()); // [ 66, 89, 93, 90,
 console.log(binarySearchTree2.depthFirstSearchInOrder()); // [ 22, 49, 66, 88, 89, 90, 93, 95, 100 ]
 console.log(binarySearchTree2.getHeight()); // 6
 console.log(binarySearchTree2.isBalanced()); // false
+binarySearchTree2.invert();
+console.log(binarySearchTree2.depthFirstSearchInOrder()); // [ 100, 95, 93, 90, 89, 88, 66, 49, 22 ]
