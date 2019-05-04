@@ -20,6 +20,8 @@ binaryHeap1.insert(4);
 console.log(binaryHeap1.values); // [ 6, 3, 5, 1, 2, 4 ]
 console.log(binaryHeap1.extractMax()); // 6
 console.log(binaryHeap1.values); // [ 5, 3, 4, 1, 2 ]
+console.log(binaryHeap1.heapSortViaExtract());
+console.log(binaryHeap1.values);
 
 const binaryHeap2 = new MaxBinaryHeap();
 

@@ -23,6 +23,8 @@ if (module.parent) {
   console.log(binaryHeap1.values); // [ 1, 2, 3, 6, 5, 4 ]
   console.log(binaryHeap1.extractMin()); // 1
   console.log(binaryHeap1.values); // [ 2, 4, 3, 6, 5 ]
+  console.log(binaryHeap1.heapSortViaExtract());
+  console.log(binaryHeap1.values);
 
   const binaryHeap2 = new MinBinaryHeap();
 

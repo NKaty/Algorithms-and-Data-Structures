@@ -135,6 +135,19 @@ class BinaryHeap {
     return this.values.reverse();
   }
 
+  heapSortViaExtract() {
+    const sortedArray = [];
+    const valuesCopy = [...this.values];
+
+    while (this.values.length) {
+      sortedArray.push(this.extract());
+    };
+
+    this.values = [...valuesCopy];
+
+    return sortedArray;
+  }
+
   bubbleUp(idx = this.values.length - 1) {
     let index = idx;
     const value = this.getItem(index);
