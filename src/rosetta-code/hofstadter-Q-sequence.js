@@ -4,7 +4,9 @@
 // in the Fibonacci sequence is the sum of the previous two terms,
 // in the Q sequence the previous two terms tell you how far to go back
 // in the Q sequence to find the two numbers to sum to make the next term of the sequence.
-// Task: Implement the Hofstadter Q Sequence equation into JavaScript
+// Task: 1.Implement the Hofstadter Q Sequence equation into JavaScript.
+// 2.Count and display how many times a member of the sequence is less
+// than its preceding term for terms up to and including the 100,000th term.
 
 // Top-down approach - Memoization
 function memoize(fn) {
@@ -27,7 +29,7 @@ function hofstadterQ (n) {
 
 console.log(hofstadterQ(1000)); // 502
 console.log(hofstadterQ(2500)); // 1261
-// console.log(hofstadterQ(1000000)); // RangeError: Maximum call stack size exceeded
+// console.log(hofstadterQ(100000)); // RangeError: Maximum call stack size exceeded
 
 // Bottom-up approach - Tabulation
 
@@ -38,8 +40,12 @@ function hofstadterQBU(n) {
     result[i] = result[i - result[i - 1]] + result[i - result[i - 2]];
   }
 
-  return result[n];
+  return {
+    lastTerm: result[n],
+    numberOfLessTerms: result.reduce((acc, item, idx, arr) => item < arr[idx - 1] ? acc + 1 : acc, 0)
+  };
 }
 
-console.log(hofstadterQBU(2500)); // 1261
-console.log(hofstadterQBU(1000000)); // 512066
+console.log(hofstadterQBU(2500)); // { lastTerm: 1261, numberOfLessTerms: 1159 }
+console.log(hofstadterQBU(100000)); // { lastTerm: 48157, numberOfLessTerms: 49798 }
+console.log(hofstadterQBU(1000000)); // { lastTerm: 512066, numberOfLessTerms: 498638 }
