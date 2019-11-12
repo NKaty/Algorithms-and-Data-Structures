@@ -34,7 +34,7 @@ function digitCount(num) {
 function mostDigits(nums) {
   let max = 0;
 
-  for (let num of nums) {
+  for (const num of nums) {
     max = Math.max(max, digitCount(num));
   }
 
@@ -47,7 +47,7 @@ function radixSort(nums) {
   for (let i = 0; i < end; i++) {
     const helperArr = Array.from({ length: 10 }, () => []);
 
-    for (let num of nums) {
+    for (const num of nums) {
       helperArr[getDigit(num, i)].push(num);
     }
 

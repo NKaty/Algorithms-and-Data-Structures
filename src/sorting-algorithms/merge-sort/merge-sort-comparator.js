@@ -41,7 +41,7 @@ function merge(left, right, comparator) {
       return 0;
     };
   }
-  let resultArr = [];
+  const resultArr = [];
   let leftCount = 0;
   let rightCount = 0;
 

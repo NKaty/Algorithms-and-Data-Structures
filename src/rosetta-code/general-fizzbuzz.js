@@ -12,7 +12,7 @@
 // return a string as stated above.
 
 function genFizzBuzz (rules, num) {
-  let numbers = Array.from({ length: num }, (e, i) => i + 1);
+  const numbers = Array.from({ length: num }, (e, i) => i + 1);
 
   return numbers.map(item => {
     return rules.reduce((str, rule) => {

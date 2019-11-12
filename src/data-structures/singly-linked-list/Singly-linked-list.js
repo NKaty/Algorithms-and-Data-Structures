@@ -108,7 +108,7 @@ class SinglyLinkedList {
   shift() {
     if (!this.head) return undefined;
 
-    let removedNode = this.head;
+    const removedNode = this.head;
 
     if (this.head === this.tail) this.tail = null;
 

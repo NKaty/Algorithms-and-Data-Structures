@@ -17,7 +17,8 @@ function pythagoreanMeans (rangeArr) {
   return {
     values: { arithmetic, geometric, harmonic },
     test: arithmetic >= geometric && geometric >= harmonic
-      ? 'is A >= G >= H ? yes' : 'is A >= G >= H ? no' };
+      ? 'is A >= G >= H ? yes' : 'is A >= G >= H ? no'
+  };
 }
 
 console.log(pythagoreanMeans([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));

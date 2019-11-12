@@ -29,6 +29,7 @@ class Trie {
     this.characters = {};
     this.isWord = isWord;
   }
+
   addWord(word, index = 0) {
     if (word.length === index) return this;
 
@@ -73,8 +74,8 @@ class Trie {
   }
 
   getWords(currentWord = '', words = []) {
-    for (let char in this.characters) {
-      if (this.characters.hasOwnProperty(char)) {
+    for (const char in this.characters) {
+      if (Object.prototype.hasOwnProperty.call(this.characters, char)) {
         const nextWord = currentWord + char;
         const subTrie = this.characters[char];
 

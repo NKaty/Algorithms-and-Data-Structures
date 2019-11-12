@@ -28,7 +28,7 @@ function topologicalSort(libs) {
 
     libsStack[lib] = true;
 
-    for (let item of libsObject[lib]) {
+    for (const item of libsObject[lib]) {
       if (libsStack[item]) console.log(`Un-orderable dependency: ${Object.keys(libsStack)}`);
       if (!visited[item]) traverse(item);
     }
@@ -37,7 +37,7 @@ function topologicalSort(libs) {
     result.push(lib);
   }
 
-  for (let lib of Object.keys(libsObject)) {
+  for (const lib of Object.keys(libsObject)) {
     traverse(lib);
   }
 

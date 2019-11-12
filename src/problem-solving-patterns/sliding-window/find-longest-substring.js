@@ -32,7 +32,7 @@ console.log(findLongestSubstringVersion1('thisisawesome')); // 6
 // Time Complexity - O(n)
 
 function findLongestSubstringVersion2(str) {
-  let obj = {};
+  const obj = {};
   let maxLen = 0;
   let start = 0;
 

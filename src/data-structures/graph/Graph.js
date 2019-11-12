@@ -56,6 +56,7 @@ class Graph {
 
     this.adjacencyList = {};
   }
+
   addVertex(vertex) {
     if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
   }
@@ -89,7 +90,7 @@ class Graph {
       result.push(vertex);
       visited[vertex] = true;
 
-      for (let linkedVertex of self.adjacencyList[vertex]) {
+      for (const linkedVertex of self.adjacencyList[vertex]) {
         if (!visited[linkedVertex.value]) traverse(linkedVertex.value);
       }
     }
@@ -112,7 +113,7 @@ class Graph {
       const vertex = stack.pop();
       result.push(vertex);
 
-      for (let linkedVertex of this.adjacencyList[vertex]) {
+      for (const linkedVertex of this.adjacencyList[vertex]) {
         if (!visited[linkedVertex.value]) {
           visited[linkedVertex.value] = true;
           stack.push(linkedVertex.value);
@@ -136,7 +137,7 @@ class Graph {
       const vertex = queue.dequeue();
       result.push(vertex);
 
-      for (let linkedVertex of this.adjacencyList[vertex]) {
+      for (const linkedVertex of this.adjacencyList[vertex]) {
         if (!visited[linkedVertex.value]) {
           visited[linkedVertex.value] = true;
           queue.enqueue(linkedVertex.value);
@@ -163,7 +164,7 @@ class Graph {
     while (queue.size) {
       const vertex = queue.dequeue();
 
-      for (let linkedVertex of this.adjacencyList[vertex]) {
+      for (const linkedVertex of this.adjacencyList[vertex]) {
         if (!visited[linkedVertex.value]) {
           visited[linkedVertex.value] = true;
           dist[linkedVertex.value] = dist[vertex] + 1;
@@ -206,7 +207,7 @@ class Graph {
       const { value: vertex, priority: weight } = priorityQueue.dequeue();
       visited[vertex] = true;
 
-      for (let linkedVertex of this.adjacencyList[vertex]) {
+      for (const linkedVertex of this.adjacencyList[vertex]) {
         if (!visited[linkedVertex.value]) {
           const newWeight = weight + linkedVertex.weight;
 
@@ -263,7 +264,7 @@ class Graph {
       currentPath.push(vertex);
       currentVisited[vertex] = true;
 
-      let unvisitedLinkedVertices = self.adjacencyList[vertex].filter((linkedVertex) => {
+      const unvisitedLinkedVertices = self.adjacencyList[vertex].filter((linkedVertex) => {
         return !visited[linkedVertex.value];
       });
 
@@ -273,7 +274,7 @@ class Graph {
         currentPath.push(start);
         paths.push(currentPath);
       } else {
-        for (let linkedVertex of unvisitedLinkedVertices) {
+        for (const linkedVertex of unvisitedLinkedVertices) {
           findPaths(linkedVertex.value, currentVisited, currentPath);
         }
       }
@@ -287,7 +288,7 @@ class Graph {
     let bestDistance = Infinity;
     const { matrix, verticesObj } = this.buildAdjacencyMatrix(vertices);
 
-    for (let path of paths) {
+    for (const path of paths) {
       let currentDistance = 0;
 
       for (let i = 0; i < path.length - 1; i++) {

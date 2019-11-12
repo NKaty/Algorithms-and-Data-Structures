@@ -167,8 +167,8 @@ class BinaryHeap {
     let index = idx;
 
     while (true) {
-      let leftChildIndex = this.getLeftChildIndex(index);
-      let rightChildIndex = this.getRightChildIndex(index);
+      const leftChildIndex = this.getLeftChildIndex(index);
+      const rightChildIndex = this.getRightChildIndex(index);
 
       if (leftChildIndex >= length && leftChildIndex >= length) break;
 

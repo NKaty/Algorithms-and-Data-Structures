@@ -6,8 +6,8 @@
 function stringifyNumbers(obj) {
   const newObj = Object.assign({}, obj);
 
-  for (let key in newObj) {
-    if (newObj.hasOwnProperty(key)) {
+  for (const key in newObj) {
+    if (Object.prototype.hasOwnProperty.call(newObj, key)) {
       if (typeof newObj[key] === 'number') newObj[key] = newObj[key].toString();
       if (typeof newObj[key] === 'object') newObj[key] = stringifyNumbers(newObj[key]);
     }
@@ -16,7 +16,7 @@ function stringifyNumbers(obj) {
   return newObj;
 }
 
-let obj = {
+const obj = {
   num: 1,
   test: [],
   data: {

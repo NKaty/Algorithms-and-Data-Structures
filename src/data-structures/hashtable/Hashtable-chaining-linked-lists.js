@@ -30,11 +30,11 @@ class Hashtable {
 
   hash(key) {
     let hash = 0;
-    let WEIRD_PRIME = 31;
+    const WEIRD_PRIME = 31;
 
     for (let i = 0; i < Math.min(key.length, 100); i++) {
-      let char = key[i];
-      let value = char.charCodeAt(0) - 96;
+      const char = key[i];
+      const value = char.charCodeAt(0) - 96;
       hash = (hash * WEIRD_PRIME + value) % this.keyMap.length;
     }
 
@@ -68,7 +68,7 @@ class Hashtable {
   getKeys() {
     let keys = [];
 
-    for (let bucket of this.keyMap) {
+    for (const bucket of this.keyMap) {
       keys = keys.concat(bucket.iterate((data) => data[0]));
     }
 
@@ -78,7 +78,7 @@ class Hashtable {
   getValues() {
     let values = [];
 
-    for (let bucket of this.keyMap) {
+    for (const bucket of this.keyMap) {
       values = values.concat(bucket.iterate((data) => data[1]));
     }
 

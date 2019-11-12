@@ -52,7 +52,7 @@ class PriorityQueue extends MinBinaryHeap {
   }
 
   printPriorityQueue() {
-    for (let item of this.values) {
+    for (const item of this.values) {
       console.log(`${item.value} - ${item.priority}`);
     }
   }

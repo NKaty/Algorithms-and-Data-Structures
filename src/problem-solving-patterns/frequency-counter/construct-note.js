@@ -13,11 +13,11 @@
 function constructNote(message, letters) {
   const obj = {};
 
-  for (let char of letters) {
+  for (const char of letters) {
     obj[char] = ++obj[char] || 1;
   }
 
-  for (let char of message) {
+  for (const char of message) {
     if (!obj[char]) return false;
     obj[char]--;
   }

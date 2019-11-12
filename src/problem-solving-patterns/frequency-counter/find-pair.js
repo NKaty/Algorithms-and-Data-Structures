@@ -10,7 +10,7 @@
 function findPair(arr, num) {
   const obj = {};
 
-  for (let item of arr) {
+  for (const item of arr) {
     if (obj[item - num] || obj[item + num]) return true;
     obj[item] = item;
   }

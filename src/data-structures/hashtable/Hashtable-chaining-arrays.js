@@ -28,11 +28,11 @@ class Hashtable {
 
   hash(key) {
     let hash = 0;
-    let WEIRD_PRIME = 31;
+    const WEIRD_PRIME = 31;
 
     for (let i = 0; i < Math.min(key.length, 100); i++) {
-      let char = key[i];
-      let value = char.charCodeAt(0) - 96;
+      const char = key[i];
+      const value = char.charCodeAt(0) - 96;
       hash = (hash * WEIRD_PRIME + value) % this.keyMap.length;
     }
 
@@ -45,7 +45,7 @@ class Hashtable {
     if (!this.keyMap[index]) this.keyMap[index] = [];
 
     else {
-      for (let item of this.keyMap[index]) {
+      for (const item of this.keyMap[index]) {
         if (item[0] === key) {
           item[1] = value;
           return;
@@ -60,7 +60,7 @@ class Hashtable {
     const index = this.hash(key);
 
     if (this.keyMap[index]) {
-      for (let item of this.keyMap[index]) {
+      for (const item of this.keyMap[index]) {
         if (item[0] === key) {
           return item[1];
         }
@@ -87,9 +87,9 @@ class Hashtable {
   getKeys() {
     const keys = [];
 
-    for (let bucket of this.keyMap) {
+    for (const bucket of this.keyMap) {
       if (bucket) {
-        for (let item of bucket) {
+        for (const item of bucket) {
           keys.push(item[0]);
         }
       }
@@ -101,9 +101,9 @@ class Hashtable {
   getValues() {
     const values = new Set();
 
-    for (let bucket of this.keyMap) {
+    for (const bucket of this.keyMap) {
       if (bucket) {
-        for (let item of bucket) {
+        for (const item of bucket) {
           values.add(item[1]);
         }
       }
@@ -115,7 +115,7 @@ class Hashtable {
   print() {
     for (let i = 0; i < this.keyMap.length; i++) {
       if (this.keyMap[i]) {
-        for (let item of this.keyMap[i]) {
+        for (const item of this.keyMap[i]) {
           console.log(`bucket ${i}: ${item}`);
         }
       }

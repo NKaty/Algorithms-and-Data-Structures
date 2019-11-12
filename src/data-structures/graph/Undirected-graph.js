@@ -55,7 +55,7 @@ class UndirectedGraph extends Graph {
     function traverse(vertex, prevVertex) {
       visited[vertex] = true;
 
-      for (let linkedVertex of self.adjacencyList[vertex]) {
+      for (const linkedVertex of self.adjacencyList[vertex]) {
         if (visited[linkedVertex.value] && linkedVertex.value !== prevVertex) return true;
         if (!visited[linkedVertex.value] && traverse(linkedVertex.value, vertex)) return true;
       }

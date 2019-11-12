@@ -11,7 +11,7 @@ function isBalanced (str) {
   };
   const bracketsStr = str.replace(/[^(){}[\]]/gi, '');
 
-  for (let bracket of bracketsStr) {
+  for (const bracket of bracketsStr) {
     if (Object.values(brackets).includes(bracket)) {
       stack.push(bracket);
     } else if (Object.keys(brackets).includes(bracket)) {

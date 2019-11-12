@@ -5,7 +5,7 @@
 function flatten(arr) {
   let resultArr = [];
 
-  for (let item of arr) {
+  for (const item of arr) {
     if (item instanceof Array) resultArr = resultArr.concat(flatten(item));
     else resultArr.push(item);
   }

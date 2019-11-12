@@ -54,7 +54,7 @@ class DirectedGraph extends Graph {
     const visited = {};
     const graphVertices = Object.keys(this.adjacencyList);
 
-    for (let vertex of graphVertices) {
+    for (const vertex of graphVertices) {
       if (!visited[vertex]) {
         queue.enqueue(vertex);
         visited[vertex] = true;
@@ -63,7 +63,7 @@ class DirectedGraph extends Graph {
           const vertex = queue.dequeue();
           result.push(vertex);
 
-          for (let linkedVertex of this.adjacencyList[vertex]) {
+          for (const linkedVertex of this.adjacencyList[vertex]) {
             if (!visited[linkedVertex.value]) {
               visited[linkedVertex.value] = true;
               queue.enqueue(linkedVertex.value);
@@ -87,13 +87,13 @@ class DirectedGraph extends Graph {
         result.push(vertex);
         visited[vertex] = true;
 
-        for (let linkedVertex of self.adjacencyList[vertex]) {
+        for (const linkedVertex of self.adjacencyList[vertex]) {
           if (!visited[linkedVertex.value]) traverse(linkedVertex.value);
         }
       }
     }
 
-    for (let vertex of graphVertices) {
+    for (const vertex of graphVertices) {
       traverse(vertex);
     }
 
@@ -111,7 +111,7 @@ class DirectedGraph extends Graph {
         visited[vertex] = true;
         recStack[vertex] = true;
 
-        for (let linkedVertex of self.adjacencyList[vertex]) {
+        for (const linkedVertex of self.adjacencyList[vertex]) {
           if (recStack[linkedVertex.value]) return true;
           if (!visited[linkedVertex.value] && traverse(linkedVertex.value)) return true;
         }
@@ -122,7 +122,7 @@ class DirectedGraph extends Graph {
       return false;
     }
 
-    for (let vertex of graphVertices) {
+    for (const vertex of graphVertices) {
       if (traverse(vertex)) return true;
     }
 
@@ -141,7 +141,7 @@ class DirectedGraph extends Graph {
       if (!visited[vertex]) {
         visited[vertex] = true;
 
-        for (let linkedVertex of self.adjacencyList[vertex]) {
+        for (const linkedVertex of self.adjacencyList[vertex]) {
           if (!visited[linkedVertex.value]) traverse(linkedVertex.value);
         }
 
@@ -149,7 +149,7 @@ class DirectedGraph extends Graph {
       }
     }
 
-    for (let vertex of graphVertices) {
+    for (const vertex of graphVertices) {
       traverse(vertex);
     }
 

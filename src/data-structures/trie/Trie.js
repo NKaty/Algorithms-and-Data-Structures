@@ -66,8 +66,8 @@ class Trie {
   }
 
   _getWords(node = this.root, currentWord = '', words = []) {
-    for (let char in node.characters) {
-      if (node.characters.hasOwnProperty(char)) {
+    for (const char in node.characters) {
+      if (Object.prototype.hasOwnProperty.call(node.characters, char)) {
         const nextWord = currentWord + char;
         const subNode = node.getSubNode(char);
 

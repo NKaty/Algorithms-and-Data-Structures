@@ -12,11 +12,11 @@ function sameFrequency(num1, num2) {
 
   const obj = {};
 
-  for (let char of str1) {
+  for (const char of str1) {
     obj[char] = ++obj[char] || 1;
   }
 
-  for (let char of str2) {
+  for (const char of str2) {
     if (!obj[char]) return false;
     obj[char]--;
   }

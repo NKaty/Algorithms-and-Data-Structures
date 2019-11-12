@@ -10,7 +10,7 @@ function minCoinChangeBF(coins, amount) {
 
   let result = Infinity;
 
-  for (let coin of coins) {
+  for (const coin of coins) {
     if (coin <= amount) {
       const currentResult = minCoinChangeBF(coins, amount - coin);
 
@@ -36,7 +36,7 @@ function minCoinChangeTD(coins, amount, memo = {}) {
 
   let result = Infinity;
 
-  for (let coin of coins) {
+  for (const coin of coins) {
     if (coin <= amount) {
       const currentResult = minCoinChangeTD(coins, amount - coin, memo);
 

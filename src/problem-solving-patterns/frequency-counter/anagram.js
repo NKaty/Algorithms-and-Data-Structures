@@ -11,11 +11,11 @@ function validAnagram(word1, word2) {
 
   const obj = {};
 
-  for (let char of word1) {
+  for (const char of word1) {
     obj[char] = ++obj[char] || 1;
   }
 
-  for (let char of word2) {
+  for (const char of word2) {
     if (obj[char]) obj[char]--;
     else return false;
   }

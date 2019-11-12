@@ -9,7 +9,7 @@ function areThereDuplicates(...args) {
 
   const lookup = {};
 
-  for (let item of args) {
+  for (const item of args) {
     if (lookup[item]) return true;
     lookup[item] = 1;
   }
