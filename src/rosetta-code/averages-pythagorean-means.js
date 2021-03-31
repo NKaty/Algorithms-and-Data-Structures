@@ -9,15 +9,20 @@
 // { values: { arithmetic: 5.5, geometric: 4.528728688116765, harmonic: 3.414171521474055 },
 //  test: 'is A >= G >= H ? yes' }
 
-function pythagoreanMeans (rangeArr) {
+function pythagoreanMeans(rangeArr) {
   const arithmetic = rangeArr.reduce((acc, item) => acc + item, 0) / rangeArr.length;
   const geometric = Math.pow(rangeArr.reduce((acc, item) => acc * item, 1), 1 / rangeArr.length);
   const harmonic = rangeArr.length / rangeArr.reduce((acc, item) => acc + 1 / item, 0);
 
   return {
-    values: { arithmetic, geometric, harmonic },
+    values: {
+      arithmetic,
+      geometric,
+      harmonic
+    },
     test: arithmetic >= geometric && geometric >= harmonic
-      ? 'is A >= G >= H ? yes' : 'is A >= G >= H ? no'
+      ? 'is A >= G >= H ? yes'
+      : 'is A >= G >= H ? no'
   };
 }
 

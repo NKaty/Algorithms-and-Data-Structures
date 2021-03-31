@@ -16,13 +16,20 @@
 // Show the first ten ordered triangles in a table of sides, perimeter, and area.
 // Show a similar ordered table for those triangles with area = 210.
 
-function heronianTriangle (triangle) {
+function heronianTriangle(triangle) {
   const perimeter = triangle.reduce((acc, item) => acc + item, 0);
   const a = triangle.reduce((acc, item) =>
     acc * (perimeter / 2 - item), perimeter / 2);
 
-  return a <= 0 ? null : Math.sqrt(a) % 1 === 0
-    ? { area: Math.sqrt(a), perimeter, triangle } : null;
+  return a <= 0
+    ? null
+    : Math.sqrt(a) % 1 === 0
+      ? {
+          area: Math.sqrt(a),
+          perimeter,
+          triangle
+        }
+      : null;
 }
 
 function gcd(a, b) {
@@ -34,7 +41,7 @@ function gcd(a, b) {
   return a || b;
 }
 
-function generateHeronianTriangles (num) {
+function generateHeronianTriangles(num) {
   const result = [];
 
   for (let a = 1; a <= num; a++) {
@@ -51,7 +58,7 @@ function generateHeronianTriangles (num) {
   return result;
 }
 
-function sortByAreaPerimeterMaxSide (a, b) {
+function sortByAreaPerimeterMaxSide(a, b) {
   if (a.area > b.area) return 1;
   if (a.area < b.area) return -1;
   if (a.perimeter > b.perimeter) return 1;
@@ -62,7 +69,7 @@ function sortByAreaPerimeterMaxSide (a, b) {
     item > acc ? item : acc, 0);
 }
 
-function getSolutionsToTasks (num) {
+function getSolutionsToTasks(num) {
   const triangles = generateHeronianTriangles(num);
 
   return {

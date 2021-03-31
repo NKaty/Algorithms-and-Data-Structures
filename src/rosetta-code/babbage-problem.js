@@ -9,7 +9,9 @@ function babbage() {
   const endDigits = 269696;
   let num = Math.ceil(Math.sqrt(endDigits));
 
-  for (; num * num % 1000000 !== endDigits; num += 2) {}
+  while (num * num % 1000000 !== endDigits) {
+    num += 2;
+  }
 
   return num;
 }

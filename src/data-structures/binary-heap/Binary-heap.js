@@ -141,7 +141,8 @@ class BinaryHeap {
 
     while (this.values.length) {
       sortedArray.push(this.extract());
-    };
+    }
+    ;
 
     this.values = [...valuesCopy];
 
@@ -173,14 +174,19 @@ class BinaryHeap {
       if (leftChildIndex >= length && leftChildIndex >= length) break;
 
       if (rightChildIndex >= length &&
-        this.compare(this.getItem(index), this.getItem(leftChildIndex))) break;
+        this.compare(this.getItem(index), this.getItem(leftChildIndex))) {
+        break;
+      }
 
       if (this.compare(this.getItem(index), this.getItem(leftChildIndex)) &&
-        this.compare(this.getItem(index), this.getItem(rightChildIndex))) break;
+        this.compare(this.getItem(index), this.getItem(rightChildIndex))) {
+        break;
+      }
 
       const swapIndex = rightChildIndex >= length ||
       this.compare(this.getItem(leftChildIndex), this.getItem(rightChildIndex))
-        ? leftChildIndex : rightChildIndex;
+        ? leftChildIndex
+        : rightChildIndex;
 
       this.swap(index, swapIndex);
       index = swapIndex;
