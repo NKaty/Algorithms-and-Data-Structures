@@ -12,6 +12,8 @@
 const singleNumber = (nums) => {
   if (!nums.length) throw new Error('The array is empty');
 
+  // We use the fact that n ^ n will be 0
+  // We XOR all the numbers and get the single number as a result
   return nums.reduce((singleNum, num) => singleNum ^ num, 0);
 };
 

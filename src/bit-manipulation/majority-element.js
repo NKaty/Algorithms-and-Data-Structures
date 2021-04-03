@@ -13,14 +13,17 @@ const findMajorityElement = (nums) => {
 
   let majorityElement = 0;
 
+  // For every bit
   for (let i = 0; i < 32; i++) {
     const mask = 1 << i;
     let bitCount = 0;
 
+    // we count the number of numbers that have this bit
     for (const num of nums) {
       if (num & mask) bitCount++;
     }
 
+    // If bitCount is more than n / 2, we set this bit in the result
     if (bitCount > nums.length / 2) majorityElement |= mask;
   }
 
