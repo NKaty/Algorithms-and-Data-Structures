@@ -10,6 +10,7 @@ This repo contains solutions to Colt Steele's JavaScript Algorithms and Data Str
     - [Multiple Pointers Pattern](src/problem-solving-patterns/multiple-pointers)
     - [Sliding Window Pattern](src/problem-solving-patterns/sliding-window)
     - [Divide And Conquer Pattern](src/problem-solving-patterns/divide-and-conquer)
+- [Bit manipulation](src/bit-manipulation)
 - [Recursion](src/recursion)
 - [Searching Algorithms](src/searching-algorithms)
     - [Binary Search](src/searching-algorithms/binary-search.js)
