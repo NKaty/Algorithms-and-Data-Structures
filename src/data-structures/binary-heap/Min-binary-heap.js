@@ -30,6 +30,7 @@ if (module.parent) {
 
   binaryHeap2.heapify([7, 4, 9, 6, 1, 8, 4]);
   console.log(binaryHeap2.values); // [ 1, 4, 4, 7, 6, 9, 8 ]
+  console.log(binaryHeap2.isHeap()); // true
   binaryHeap2.heapSort();
   console.log(binaryHeap2.values); // [ 1, 4, 4, 6, 7, 8, 9 ]
 }

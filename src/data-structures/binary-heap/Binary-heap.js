@@ -21,6 +21,7 @@
 // Additionally, the following methods are implemented on the class:
 // find - returns an array of indexes of items with the given value
 // remove - removes all items with the given value
+// isHeap - checks if the heap invariant is still being maintained (if the heap is valid)
 
 class BinaryHeap {
   constructor() {
@@ -191,6 +192,25 @@ class BinaryHeap {
       this.swap(index, swapIndex);
       index = swapIndex;
     }
+  }
+
+  isHeap(idx = 0) {
+    if (idx >= this.values.length) return true;
+
+    const parent = this.getItem(idx);
+    const leftChildIndex = this.getLeftChildIndex(idx);
+    const rightChildIndex = this.getRightChildIndex(idx);
+
+    if (leftChildIndex < this.values.length &&
+      !this.compare(parent, this.getItem(leftChildIndex))) {
+      return false;
+    }
+    if (rightChildIndex < this.values.length &&
+      !this.compare(parent, this.getItem(rightChildIndex))) {
+      return false;
+    }
+
+    return this.isHeap(leftChildIndex) && this.isHeap(rightChildIndex);
   }
 
   isEmpty() {

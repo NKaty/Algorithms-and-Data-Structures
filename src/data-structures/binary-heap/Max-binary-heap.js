@@ -27,5 +27,6 @@ const binaryHeap2 = new MaxBinaryHeap();
 
 binaryHeap2.heapify([7, 4, 9, 6, 1, 8, 4]);
 console.log(binaryHeap2.values); // [ 9, 6, 8, 4, 1, 7, 4 ]
+console.log(binaryHeap2.isHeap()); // true
 binaryHeap2.heapSort();
 console.log(binaryHeap2.values); // [ 9, 8, 7, 6, 4, 4, 1 ]
