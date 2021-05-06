@@ -24,13 +24,14 @@
 // isHeap - checks if the heap invariant is still being maintained (if the heap is valid)
 
 class BinaryHeap {
-  constructor() {
+  constructor(array = []) {
     if (new.target === BinaryHeap) {
       throw new TypeError('You cannot instantiate BinaryHeap class directly');
     }
 
-    this.values = [];
+    this.values = array;
     this.getItem = this.getItem.bind(this);
+    this.heapify();
   }
 
   getLeftChildIndex(parentIndex) {
@@ -109,31 +110,26 @@ class BinaryHeap {
     return this;
   }
 
-  heapify(array = this.values, index = array.length) {
-    if (array === this.values) {
-      for (let i = 0; i < index; i++) {
-        this.bubbleUp(i);
-      }
-    } else {
-      for (let i = 0; i < index; i++) {
-        this.insert(array[i]);
-      }
+  // Time complexity O(n)
+  // http://www.cs.umd.edu/~meesh/351/mount/lectures/lect14-heapsort-analysis-part.pdf
+  heapify() {
+    for (let i = Math.max(0, Math.floor(this.values.length / 2 - 1)); i >= 0; i--) {
+      this.sinkDown(i);
     }
-
-    return this.values;
   }
 
-  heapSort(array = this.values) {
-    const length = array.length;
+  heapSort() {
+    const valuesCopy = [...this.values];
 
-    if (array !== this.values) this.heapify(array);
-
-    for (let i = 1; i < length; i++) {
-      this.swap(0, length - i);
-      this.heapify(this.values, length - i);
+    for (let i = this.values.length - 1; i > 0; i--) {
+      this.swap(0, i);
+      this.sinkDown(0, i);
     }
 
-    return this.values.reverse();
+    const sortedArray = [...this.values];
+    this.values = valuesCopy;
+
+    return sortedArray.reverse();
   }
 
   heapSortViaExtract() {
@@ -164,8 +160,7 @@ class BinaryHeap {
     }
   }
 
-  sinkDown(idx = 0) {
-    const length = this.values.length;
+  sinkDown(idx = 0, length = this.values.length) {
     let index = idx;
 
     while (true) {
