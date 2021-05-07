@@ -113,6 +113,7 @@ class SinglyLinkedList {
     if (this.head === this.tail) this.tail = null;
 
     this.head = removedNode.next;
+    removedNode.next = null;
     this.length--;
 
     return removedNode;
@@ -175,6 +176,7 @@ class SinglyLinkedList {
 
     const removedNode = prevNode.next;
     prevNode.next = removedNode.next;
+    removedNode.next = null;
     this.length--;
 
     return removedNode;
