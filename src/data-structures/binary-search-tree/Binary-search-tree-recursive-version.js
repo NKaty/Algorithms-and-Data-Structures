@@ -141,7 +141,12 @@ class BinarySearchTree {
   }
 
   findNodeWithParent(data, currentNode = this.root, parentNode = null) {
-    if (!currentNode) return { parentNode: null, currentNode: null };
+    if (!currentNode) {
+      return {
+        parentNode: null,
+        currentNode: null
+      };
+    }
 
     if (data < currentNode.data) {
       return this.findNodeWithParent(data, currentNode.left, currentNode);
@@ -151,13 +156,70 @@ class BinarySearchTree {
       return this.findNodeWithParent(data, currentNode.right, currentNode);
     }
 
-    return { parentNode, currentNode };
+    return {
+      parentNode,
+      currentNode
+    };
   }
 
   findNextBigNodeWithParent(nextBigNodeParent = this.root, nextBigNode = nextBigNodeParent.right) {
-    if (!nextBigNode || !nextBigNode.left) return { nextBigNodeParent, nextBigNode };
+    if (!nextBigNode || !nextBigNode.left) {
+      return {
+        nextBigNodeParent,
+        nextBigNode
+      };
+    }
 
     return this.findNextBigNodeWithParent(nextBigNode, nextBigNode.left);
+  }
+
+  _removeRecursively(data, node = this.root) {
+    if (!node) return null;
+
+    // Data is smaller than the value of the current node
+    // Look for data in the left subtree
+    if (data < node.data) {
+      node.left = this._removeRecursively(data, node.left);
+    // Data is greater than the value of the current node
+    // Look for data in the right subtree
+    } else if (data > node.data) {
+      node.right = this._removeRecursively(data, node.right);
+    // Found the node with data
+    } else {
+      // There is no left child, return the right child
+      // Or there are no children - return null as a right child
+      if (!node.left) {
+        return node.right;
+      // There is no right child, return the left child
+      } else if (!node.right) {
+        return node.left;
+      // There are two children
+      } else {
+        // Find the next biggest node (minimum node in the right branch)
+        // to replace current node with.
+        const nextBigNode = this.findMin(node.right);
+        // Replace the data
+        node.data = nextBigNode.data;
+        // Recursively remove the next biggest node
+        node.right = this._removeRecursively(nextBigNode.data, node.right);
+      }
+    }
+
+    return node;
+  }
+
+  removeRecursively(data) {
+    let removedNode = this.find(data);
+    if (!removedNode) return null;
+    removedNode = Object.assign({}, removedNode,
+      {
+        left: null,
+        right: null
+      });
+
+    this.root = this._removeRecursively(data);
+
+    return removedNode;
   }
 
   remove(data) {
@@ -281,7 +343,7 @@ console.log(binarySearchTree1.isBalanced()); // true
 
 const binarySearchTree2 = new BinarySearchTree();
 binarySearchTree2.insert(22).insert(49).insert(85).insert(66).insert(95).insert(90).insert(100).insert(88).insert(93).insert(89);
-binarySearchTree2.remove(85);
+console.log(binarySearchTree2.removeRecursively(85)); // // { data: 85, left: null, right: null }
 console.log(binarySearchTree2.root.data); // 22
 console.log(binarySearchTree2.root.right.right.data); // 88
 console.log(binarySearchTree2.root.right.right.right.left.left.data); // 89
