@@ -5,7 +5,7 @@
 // pipe (from left to right)
 
 /**
- * @param {Function} functions
+ * @param {...Function} functions
  * @return {Function}
  */
 const compose = (...functions) => {
@@ -22,7 +22,7 @@ const compose = (...functions) => {
 };
 
 /**
- * @param {Function} functions
+ * @param {...Function} functions
  * @return {Function}
  */
 const composeUsingReduce = (...functions) => {
@@ -37,7 +37,7 @@ const composeUsingReduce = (...functions) => {
 };
 
 /**
- * @param {Function} functions
+ * @param {...Function} functions
  * @return {Function}
  */
 const pipe = (...functions) => {
@@ -54,7 +54,7 @@ const pipe = (...functions) => {
 };
 
 /**
- * @param {Function} functions
+ * @param {...Function} functions
  * @return {Function}
  */
 const pipeUsingReduce = (...functions) => {

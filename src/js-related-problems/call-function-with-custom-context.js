@@ -8,7 +8,7 @@
 
 /**
  * @param {Object} context
- * @param {Array} args
+ * @param {...*?} args
  * @return {null|boolean|number|string|Array|Object}
  */
 // eslint-disable-next-line no-extend-native
