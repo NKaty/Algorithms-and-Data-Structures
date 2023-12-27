@@ -80,10 +80,9 @@ console.log(canJumpBU([3, 2, 1, 0, 4])); // false
 console.log(canJumpBU([10000, ...Array.from(Array(9997).keys()).reverse(), 0])); // true
 console.log(canJumpBU([9997, ...Array.from(Array(9997).keys()).reverse(), 0])); // false
 
-// greedy algorithm
+// Greedy algorithm
 // Time Complexity O(n)
 // Space Complexity O(1)
-
 function canJumpGA(nums) {
   let maxIndex = 0;
   for (let i = 0; i < nums.length; i++) {

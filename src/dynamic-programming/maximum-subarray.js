@@ -11,7 +11,7 @@ function maxSubArray(nums) {
   }
 
   return Math.max(...subArraySum);
-};
+}
 
 console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // 6
 console.log(maxSubArray([-1, 0, -2])); // 0
@@ -19,14 +19,14 @@ console.log(maxSubArray([-1])); // -1
 
 // Time Complexity O(n)
 // Space Complexity O(1)
-function maxSubArrayWithoutAdditinalSpace(nums) {
+function maxSubArrayWithoutAdditionalSpace(nums) {
   for (let i = 1; i < nums.length; i++) {
     nums[i] = Math.max(nums[i] + nums[i - 1], nums[i]);
   }
 
   return Math.max(...nums);
-};
+}
 
-console.log(maxSubArrayWithoutAdditinalSpace([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // 6
-console.log(maxSubArrayWithoutAdditinalSpace([-1, 0, -2])); // 0
-console.log(maxSubArrayWithoutAdditinalSpace([-1])); // -1
+console.log(maxSubArrayWithoutAdditionalSpace([-2, 1, -3, 4, -1, 2, 1, -5, 4])); // 6
+console.log(maxSubArrayWithoutAdditionalSpace([-1, 0, -2])); // 0
+console.log(maxSubArrayWithoutAdditionalSpace([-1])); // -1
