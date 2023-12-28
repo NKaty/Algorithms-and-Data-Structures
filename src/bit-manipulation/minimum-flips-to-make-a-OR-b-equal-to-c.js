@@ -61,7 +61,7 @@ const findMinFlipsHammingWeight = (a, b, c) => {
   // We find the OR of a and b with no flips made
   // We find the difference between the OR and c
   const diff = (a | b) ^ c;
-  // Then we find out how many bits the current OR and c differ by
+  // Then we find out how many bits the current OR and c differ by,
   // and we correct this number in case we need to make flips
   // in both a and b (the case when the bit is set in a and b,
   // but it must not be set in c)

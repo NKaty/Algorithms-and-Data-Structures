@@ -77,7 +77,7 @@ const findMaxFrequencyWithMap = (s, maxLetters, minSize, maxSize) => {
   const chars = new Map();
 
   // We iterate over every character in the first substring
-  // and add the number of it's occurrences to chars map
+  // and add the number of its occurrences to chars map
   for (const char of substring) {
     if (chars.has(char)) chars.set(char, chars.get(char) + 1);
     else chars.set(char, 1);

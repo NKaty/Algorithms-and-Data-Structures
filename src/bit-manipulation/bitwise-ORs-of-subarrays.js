@@ -47,7 +47,7 @@ const subarrayBitwiseORs = (arr) => {
 
   // We iterate over every number in the array
   for (const num of arr) {
-    // The number is also a subarray and it's OR equals to the number itself
+    // The number is also a subarray, and it's OR equals to the number itself
     // So we add it to the result
     subarrayORs.add(num);
     // We start a temp set so that we can iterate over the current ORs

@@ -52,14 +52,14 @@ const pseudoPalindromicPaths = (root) => {
   // 2 -> 1 -> 1 --> 0100 -> 0110 -> 0100 --> pseudo-palindromic
   const dfs = (node, path = 0) => {
     // We can use a 32-bit integer as a bitmask,
-    // because according to the constrains the values
+    // because according to the constraints the values
     // of nodes can be from 1 to 9
     // The one means digit has an odd frequency
     // The zero means digit has an even frequency
     path ^= (1 << node.val);
     // If the node doesn't have children, we can check the path
     // If we don't have any odd digits or have only one
-    // the expresion: path & (path - 1) will be 0
+    // the expression: path & (path - 1) will be 0
     // as it flips the least-significant bit to 0
     if (!node.left && !node.right) count += !(path & (path - 1));
     // Otherwise, we keep constructing the path

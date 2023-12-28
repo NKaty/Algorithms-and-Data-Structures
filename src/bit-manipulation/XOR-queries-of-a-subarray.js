@@ -75,7 +75,7 @@ class SegmentTree {
 
   // Constructs a segment tree
   // We recursively go through an array and build the tree that
-  // stores the XOR of it's elements
+  // stores the XOR of its elements
   // We start building the tree from the root (currentIdx == 0)
   // The leaf nodes are the elements of the array
   // The internal nodes stores the XOR of their subtrees
@@ -131,7 +131,7 @@ class SegmentTree {
     // We are within the query range
     // The corresponding value of the tree array participates in the result
     if (queryLeft <= leftIdx && queryRight >= rightIdx) return this.values[currentIdx];
-    // We are outside of the query range
+    // We are outside the query range
     // The corresponding value of the tree array doesn't participate in the result
     if (queryLeft > rightIdx || queryRight < leftIdx) return 0;
 

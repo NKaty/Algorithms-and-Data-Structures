@@ -31,7 +31,7 @@ const numberOfStepsImproved = (num) => {
   while (num) {
     // We reduce the number of iterations by combine two operation together
     // If the number is odd, we need to subtract 1: + (num & 1) --> + 0 or 1
-    // Now the number is even and we need to perform the right shift: + 1
+    // Now the number is even, and we need to perform the right shift: + 1
     count += (num & 1) + 1;
     // And now we go to the next bit
     num >>= 1;

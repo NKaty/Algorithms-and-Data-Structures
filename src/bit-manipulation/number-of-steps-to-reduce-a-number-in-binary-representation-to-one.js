@@ -23,7 +23,7 @@ const numSteps = (s) => {
     // taking into account that we could add 1 to the number to
     // make it even on the previous iterations
     // If the current bit is 1, that means that we have to add 1
-    // to make the number even and we have to divide it by 2 in any case
+    // to make the number even, and we have to divide it by 2 in any case
     // (s[i] ^ prev)            +             1
     // For example, 110100011
     // 110100011

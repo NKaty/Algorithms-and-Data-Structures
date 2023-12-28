@@ -35,7 +35,7 @@ const rangeBitwiseAndBrianKernighan = (left, right) => {
   // All of the above observations can be applied here as well
   // We can even add the fourth observation: & of the range of numbers will always
   // produce a number less than or equal to the left (the smallest) number
-  // For example: 11001 11010 11011 11100 --> 11000 (less then 11001)
+  // For example: 11001 11010 11011 11100 --> 11000 (less than 11001)
   // So we get rid of the right bits of the right number until it becomes
   // less than or equal to the left number
   while (right > left) {

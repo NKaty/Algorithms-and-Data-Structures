@@ -8,7 +8,7 @@
 // 1. The order of output does not matter.
 // 2. The hour must not contain a leading zero, for example "01:00" is not valid,
 // it should be "1:00".
-// 3. The minute must be consist of two digits and may contain a leading zero,
+// 3. The minute must be consisted of two digits and may contain a leading zero,
 // for example "10:2" is not valid, it should be "10:02".
 
 // hamming weight
