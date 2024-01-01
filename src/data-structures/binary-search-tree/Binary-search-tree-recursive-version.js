@@ -39,11 +39,25 @@
 // This function should search through each node in the binary search tree using
 // in-order depth first search and return an array containing each node's value.
 
-// Additionally, the following methods are implemented on the class:
-// getHeight - returns the height of the tree
-// findMin/Max - returns node with min/max value in the binary tree
-// invert - invert the current tree structure (produce a tree that is equivalently
-// the mirror image of the current tree)
+// getHeight
+// This function should return the height of the tree
+// The height is the number of nodes along the longest path
+// from the root node down to the farthest leaf node.
+
+// getMinHeight
+// This function should return the min height of the tree
+// The minimum height is the number of nodes along the shortest path
+// from the root node down to the nearest leaf node.
+
+// findMin
+// This function should return min value in the binary tree
+
+// findMax
+// This function should return max value in the binary tree
+
+// invert
+// This function should invert the current tree structure
+// (produce a tree that is equivalently the mirror image of the current tree)
 
 const BinarySearchTreeNode = require('./Binary-search-tree-node');
 
@@ -61,6 +75,12 @@ class BinarySearchTree {
   getMinHeight(node = this.root) {
     if (!node) return 0;
 
+    if (!node.left && !node.right) return 1;
+
+    if (!node.left) return this.getMinHeight(node.right) + 1;
+
+    if (!node.right) return this.getMinHeight(node.left) + 1;
+
     return Math.min(this.getMinHeight(node.left), this.getMinHeight(node.right)) + 1;
   }
 
@@ -70,11 +90,6 @@ class BinarySearchTree {
     return Math.abs(this.getHeight(node.left) - this.getHeight(node.right)) <= 1 &&
       this.isBalanced(node.left) &&
       this.isBalanced(node.right);
-  }
-
-  // More efficient way to know whether the BST is balanced
-  moreEfficientIsBalanced() {
-    return this.getHeight() - this.getMinHeight() <= 1;
   }
 
   insert(data, node = this.root) {
@@ -343,7 +358,7 @@ console.log(binarySearchTree1.isBalanced()); // true
 
 const binarySearchTree2 = new BinarySearchTree();
 binarySearchTree2.insert(22).insert(49).insert(85).insert(66).insert(95).insert(90).insert(100).insert(88).insert(93).insert(89);
-console.log(binarySearchTree2.removeRecursively(85)); // // { data: 85, left: null, right: null }
+console.log(binarySearchTree2.removeRecursively(85)); // { data: 85, left: null, right: null }
 console.log(binarySearchTree2.root.data); // 22
 console.log(binarySearchTree2.root.right.right.data); // 88
 console.log(binarySearchTree2.root.right.right.right.left.left.data); // 89
