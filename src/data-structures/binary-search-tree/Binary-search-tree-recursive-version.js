@@ -343,31 +343,34 @@ class BinarySearchTree {
 }
 
 const binarySearchTree1 = new BinarySearchTree();
-
 binarySearchTree1.insert(15).insert(20).insert(10).insert(12).insert(8).insert(13);
-console.log('min', binarySearchTree1.findMin().data); // 8
-console.log('max', binarySearchTree1.findMax().data); // 20
-console.log(binarySearchTree1.contains(10)); // true
-console.log(binarySearchTree1.remove(10)); // { data: 10, left: null, right: null }
-console.log(binarySearchTree1.root.data); // 15
-console.log(binarySearchTree1.root.left.data); // 12
-console.log(binarySearchTree1.root.left.right.data); // 13
-console.log(binarySearchTree1.root.left.left.data); // 8
-console.log(binarySearchTree1.getHeight()); // 3
-console.log(binarySearchTree1.isBalanced()); // true
+console.log('---BinarySearchTree1---');
+console.log('min:', binarySearchTree1.findMin().data); // 8
+console.log('max:', binarySearchTree1.findMax().data); // 20
+console.log('Contains 10:', binarySearchTree1.contains(10)); // true
+console.log('Remove 10:', binarySearchTree1.remove(10)); // { data: 10, left: null, right: null }
+console.log('root.data after the removal:', binarySearchTree1.root.data); // 15
+console.log('root.left.data after the removal:', binarySearchTree1.root.left.data); // 12
+console.log('root.left.right.data after the removal:', binarySearchTree1.root.left.right.data); // 13
+console.log('root.left.left.data after the removal:', binarySearchTree1.root.left.left.data); // 8
+console.log('height:', binarySearchTree1.getHeight()); // 3
+console.log('minHeight:', binarySearchTree1.getMinHeight()); // 2
+console.log('Is balanced:', binarySearchTree1.isBalanced()); // true
 
 const binarySearchTree2 = new BinarySearchTree();
 binarySearchTree2.insert(22).insert(49).insert(85).insert(66).insert(95).insert(90).insert(100).insert(88).insert(93).insert(89);
-console.log(binarySearchTree2.removeRecursively(85)); // { data: 85, left: null, right: null }
-console.log(binarySearchTree2.root.data); // 22
-console.log(binarySearchTree2.root.right.right.data); // 88
-console.log(binarySearchTree2.root.right.right.right.left.left.data); // 89
-console.log(binarySearchTree2.findSecondLargest().data); // 95
-console.log(binarySearchTree2.breadthFirstSearch()); // [ 22, 49, 88, 66, 95, 90, 100, 89, 93 ]
-console.log(binarySearchTree2.depthFirstSearchPreOrder()); // [ 22, 49, 88, 66, 95, 90, 89, 93, 100 ]
-console.log(binarySearchTree2.depthFirstSearchPostOrder()); // [ 66, 89, 93, 90, 100, 95, 88, 49, 22 ]
-console.log(binarySearchTree2.depthFirstSearchInOrder()); // [ 22, 49, 66, 88, 89, 90, 93, 95, 100 ]
-console.log(binarySearchTree2.getHeight()); // 6
-console.log(binarySearchTree2.isBalanced()); // false
+console.log('---BinarySearchTree2---');
+console.log('Recursively remove 85:', binarySearchTree2.removeRecursively(85)); // { data: 85, left: null, right: null }
+console.log('root.data after the removal:', binarySearchTree2.root.data); // 22
+console.log('root.right.right.data after the removal:', binarySearchTree2.root.right.right.data); // 88
+console.log('root.right.right.right.left.left.data after the removal:', binarySearchTree2.root.right.right.right.left.left.data); // 89
+console.log('Find second largest:', binarySearchTree2.findSecondLargest().data); // 95
+console.log('BreadthFirst:', binarySearchTree2.breadthFirstSearch()); // [ 22, 49, 88, 66, 95, 90, 100, 89, 93 ]
+console.log('PreOrder:', binarySearchTree2.depthFirstSearchPreOrder()); // [ 22, 49, 88, 66, 95, 90, 89, 93, 100 ]
+console.log('PostOrder:', binarySearchTree2.depthFirstSearchPostOrder()); // [ 66, 89, 93, 90, 100, 95, 88, 49, 22 ]
+console.log('InOrder:', binarySearchTree2.depthFirstSearchInOrder()); // [ 22, 49, 66, 88, 89, 90, 93, 95, 100 ]
+console.log('height:', binarySearchTree2.getHeight()); // 6
+console.log('minHeight:', binarySearchTree2.getMinHeight()); // 4
+console.log('Is balanced:', binarySearchTree2.isBalanced()); // false
 binarySearchTree2.invert();
-console.log(binarySearchTree2.depthFirstSearchInOrder()); // [ 100, 95, 93, 90, 89, 88, 66, 49, 22 ]
+console.log('InOrder after the inversion:', binarySearchTree2.depthFirstSearchInOrder()); // [ 100, 95, 93, 90, 89, 88, 66, 49, 22 ]

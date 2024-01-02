@@ -40,11 +40,25 @@
 // This function should search through each node in the binary search tree using
 // in-order depth first search and return an array containing each node's value.
 
-// Additionally, the following methods are implemented on the class:
-// getHeight - returns the height of the tree
-// findMin/Max - returns node with min/max value in the binary tree
-// invert - invert the current tree structure (produce a tree that is equivalently
-// the mirror image of the current tree)
+// getHeight
+// This function should return the height of the tree
+// The height is the number of nodes along the longest path
+// from the root node down to the farthest leaf node.
+
+// getMinHeight
+// This function should return the min height of the tree
+// The minimum height is the number of nodes along the shortest path
+// from the root node down to the nearest leaf node.
+
+// findMin
+// This function should return min value in the binary tree
+
+// findMax
+// This function should return max value in the binary tree
+
+// invert
+// This function should invert the current tree structure
+// (produce a tree that is equivalently the mirror image of the current tree)
 
 const BinarySearchTreeNode = require('./Binary-search-tree-node');
 const Queue = require('../queue/Queue');
@@ -76,6 +90,30 @@ class BinarySearchTree {
     }
 
     return height;
+  }
+
+  getMinHeight(node = this.root) {
+    if (!node) return 0;
+
+    let minHeight = 1;
+    const queue = new Queue();
+    queue.enqueue(node);
+
+    while (queue.size) {
+      const levelLength = queue.size;
+      for (let i = 0; i < levelLength; i++) {
+        const currentNode = queue.dequeue();
+
+        if (!currentNode.left && !currentNode.right) return minHeight;
+
+        if (currentNode.left) queue.enqueue(currentNode.left);
+
+        if (currentNode.right) queue.enqueue(currentNode.right);
+      }
+      minHeight++;
+    }
+
+    return minHeight;
   }
 
   isBalanced(node = this.root) {
@@ -364,31 +402,34 @@ class BinarySearchTree {
 }
 
 const binarySearchTree1 = new BinarySearchTree();
-
 binarySearchTree1.insert(15).insert(20).insert(10).insert(12).insert(8).insert(13);
-console.log('min', binarySearchTree1.findMin().data); // 8
-console.log('max', binarySearchTree1.findMax().data); // 20
-console.log(binarySearchTree1.contains(10)); // true
-console.log(binarySearchTree1.remove(10)); // { data: 10, left: null, right: null }
-console.log(binarySearchTree1.root.data); // 15
-console.log(binarySearchTree1.root.left.data); // 12
-console.log(binarySearchTree1.root.left.right.data); // 13
-console.log(binarySearchTree1.root.left.left.data); // 8
-console.log(binarySearchTree1.getHeight()); // 3
-console.log(binarySearchTree1.isBalanced()); // true
+console.log('---BinarySearchTree1---');
+console.log('min:', binarySearchTree1.findMin().data); // 8
+console.log('max:', binarySearchTree1.findMax().data); // 20
+console.log('Contains 10:', binarySearchTree1.contains(10)); // true
+console.log('Remove 10:', binarySearchTree1.remove(10)); // { data: 10, left: null, right: null }
+console.log('root.data after the removal:', binarySearchTree1.root.data); // 15
+console.log('root.left.data after the removal:', binarySearchTree1.root.left.data); // 12
+console.log('root.left.right.data after the removal:', binarySearchTree1.root.left.right.data); // 13
+console.log('root.left.left.data after the removal:', binarySearchTree1.root.left.left.data); // 8
+console.log('height:', binarySearchTree1.getHeight()); // 3
+console.log('minHeight:', binarySearchTree1.getMinHeight()); // 2
+console.log('Is balanced:', binarySearchTree1.isBalanced()); // true
 
 const binarySearchTree2 = new BinarySearchTree();
 binarySearchTree2.insert(22).insert(49).insert(85).insert(66).insert(95).insert(90).insert(100).insert(88).insert(93).insert(89);
-binarySearchTree2.remove(85);
-console.log(binarySearchTree2.root.data); // 22
-console.log(binarySearchTree2.root.right.right.data); // 88
-console.log(binarySearchTree2.root.right.right.right.left.left.data); // 89
-console.log(binarySearchTree2.findSecondLargest().data); // 95
-console.log(binarySearchTree2.breadthFirstSearch()); // [ 22, 49, 88, 66, 95, 90, 100, 89, 93 ]
-console.log(binarySearchTree2.depthFirstSearchPreOrder()); // [ 22, 49, 88, 66, 95, 90, 89, 93, 100 ]
-console.log(binarySearchTree2.depthFirstSearchPostOrder()); // [ 66, 89, 93, 90, 100, 95, 88, 49, 22 ]
-console.log(binarySearchTree2.depthFirstSearchInOrder()); // [ 22, 49, 66, 88, 89, 90, 93, 95, 100 ]
-console.log(binarySearchTree2.getHeight()); // 6
-console.log(binarySearchTree2.isBalanced()); // false
+console.log('---BinarySearchTree2---');
+console.log('Remove 85:', binarySearchTree2.remove(85)); // { data: 85, left: null, right: null }
+console.log('root.data after the removal:', binarySearchTree2.root.data); // 22
+console.log('root.right.right.data after the removal:', binarySearchTree2.root.right.right.data); // 88
+console.log('root.right.right.right.left.left.data after the removal:', binarySearchTree2.root.right.right.right.left.left.data); // 89
+console.log('Find second largest:', binarySearchTree2.findSecondLargest().data); // 95
+console.log('BreadthFirst:', binarySearchTree2.breadthFirstSearch()); // [ 22, 49, 88, 66, 95, 90, 100, 89, 93 ]
+console.log('PreOrder:', binarySearchTree2.depthFirstSearchPreOrder()); // [ 22, 49, 88, 66, 95, 90, 89, 93, 100 ]
+console.log('PostOrder:', binarySearchTree2.depthFirstSearchPostOrder()); // [ 66, 89, 93, 90, 100, 95, 88, 49, 22 ]
+console.log('InOrder:', binarySearchTree2.depthFirstSearchInOrder()); // [ 22, 49, 66, 88, 89, 90, 93, 95, 100 ]
+console.log('height:', binarySearchTree2.getHeight()); // 6
+console.log('minHeight:', binarySearchTree2.getMinHeight()); // 4
+console.log('Is balanced:', binarySearchTree2.isBalanced()); // false
 binarySearchTree2.invert();
-console.log(binarySearchTree2.depthFirstSearchInOrder()); // [ 100, 95, 93, 90, 89, 88, 66, 49, 22 ]
+console.log('InOrder after the inversion:', binarySearchTree2.depthFirstSearchInOrder()); // [ 100, 95, 93, 90, 89, 88, 66, 49, 22 ]
