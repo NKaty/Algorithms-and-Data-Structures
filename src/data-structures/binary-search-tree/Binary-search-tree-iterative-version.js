@@ -60,6 +60,12 @@
 // This function should invert the current tree structure
 // (produce a tree that is equivalently the mirror image of the current tree)
 
+// findLowestCommonAncestor
+// This function should return the lowest common ancestor (LCA) node of two given nodes
+// The lowest common ancestor is defined between two nodes p and q
+// as the lowest node in T that has both p and q as descendants
+// (where we allow a node to be a descendant of itself)
+
 const BinarySearchTreeNode = require('./Binary-search-tree-node');
 const Queue = require('../queue/Queue');
 const Stack = require('../stack/Stack');
@@ -277,6 +283,22 @@ class BinarySearchTree {
     return { nextBigNodeParent, nextBigNode };
   }
 
+  findLowestCommonAncestor(node1, node2, nodeToTraverse = this.root) {
+    let currentNode = nodeToTraverse;
+
+    while (currentNode) {
+      if (currentNode.data > node1.data && currentNode.data > node2.data) {
+        currentNode = currentNode.left;
+      } else if (currentNode.data < node1.data && currentNode.data < node2.data) {
+        currentNode = currentNode.right;
+      } else {
+        return currentNode;
+      }
+    }
+
+    return currentNode;
+  }
+
   remove(data) {
     const { parentNode, currentNode } = this.findNodeWithParent(data);
 
@@ -424,6 +446,10 @@ console.log('root.data after the removal:', binarySearchTree2.root.data); // 22
 console.log('root.right.right.data after the removal:', binarySearchTree2.root.right.right.data); // 88
 console.log('root.right.right.right.left.left.data after the removal:', binarySearchTree2.root.right.right.right.left.left.data); // 89
 console.log('Find second largest:', binarySearchTree2.findSecondLargest().data); // 95
+console.log('Find lowest common ancestor:', binarySearchTree2.findLowestCommonAncestor(
+  binarySearchTree2.root.right.right.right.left.left,
+  binarySearchTree2.root.right.right
+).data); // 88
 console.log('BreadthFirst:', binarySearchTree2.breadthFirstSearch()); // [ 22, 49, 88, 66, 95, 90, 100, 89, 93 ]
 console.log('PreOrder:', binarySearchTree2.depthFirstSearchPreOrder()); // [ 22, 49, 88, 66, 95, 90, 89, 93, 100 ]
 console.log('PostOrder:', binarySearchTree2.depthFirstSearchPostOrder()); // [ 66, 89, 93, 90, 100, 95, 88, 49, 22 ]
