@@ -65,11 +65,14 @@
 // as the lowest node in T that has both p and q as descendants
 // (where we allow a node to be a descendant of itself)
 
+// getBalancedTree
+// This function should return a balanced version of the binary search tree
+
 const BinarySearchTreeNode = require('./Binary-search-tree-node');
 
 class BinarySearchTree {
-  constructor() {
-    this.root = null;
+  constructor(root = null) {
+    this.root = root;
   }
 
   getHeight(node = this.root) {
@@ -304,6 +307,8 @@ class BinarySearchTree {
   breadthFirstSearch(nodeToTraverse = this.root) {
     const data = [];
 
+    if (!nodeToTraverse) return data;
+
     function traverse(node, depth) {
       data[depth] = data[depth] || [];
       data[depth].push(node.data);
@@ -320,6 +325,8 @@ class BinarySearchTree {
   depthFirstSearchPreOrder(nodeToTraverse = this.root) {
     const data = [];
 
+    if (!nodeToTraverse) return data;
+
     function traverse(node) {
       data.push(node.data);
 
@@ -334,6 +341,8 @@ class BinarySearchTree {
 
   depthFirstSearchPostOrder(nodeToTraverse = this.root) {
     const data = [];
+
+    if (!nodeToTraverse) return data;
 
     function traverse(node) {
       if (node.left) traverse(node.left);
@@ -350,6 +359,8 @@ class BinarySearchTree {
   depthFirstSearchInOrder(nodeToTraverse = this.root) {
     const data = [];
 
+    if (!nodeToTraverse) return data;
+
     function traverse(node) {
       if (node.left) traverse(node.left);
 
@@ -361,6 +372,23 @@ class BinarySearchTree {
     traverse(nodeToTraverse);
 
     return data;
+  }
+
+  getBalancedTree(node = this.root) {
+    const sortedData = this.depthFirstSearchInOrder(node);
+
+    function balance(start, end) {
+      if (start > end) return null;
+
+      const middle = Math.floor((start + end) / 2);
+      const node = new BinarySearchTreeNode(sortedData[middle]);
+      node.left = balance(start, middle - 1);
+      node.right = balance(middle + 1, end);
+
+      return node;
+    }
+
+    return new BinarySearchTree(balance(0, sortedData.length));
   }
 }
 
@@ -398,5 +426,7 @@ console.log('InOrder:', binarySearchTree2.depthFirstSearchInOrder()); // [ 22, 4
 console.log('height:', binarySearchTree2.getHeight()); // 6
 console.log('minHeight:', binarySearchTree2.getMinHeight()); // 4
 console.log('Is balanced:', binarySearchTree2.isBalanced()); // false
+const balancedTree = binarySearchTree2.getBalancedTree();
+console.log('Is balanced:', balancedTree.isBalanced()); // true
 binarySearchTree2.invert();
 console.log('InOrder after the inversion:', binarySearchTree2.depthFirstSearchInOrder()); // [ 100, 95, 93, 90, 89, 88, 66, 49, 22 ]
