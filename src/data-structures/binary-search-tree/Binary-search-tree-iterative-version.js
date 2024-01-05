@@ -66,6 +66,9 @@
 // as the lowest node in T that has both p and q as descendants
 // (where we allow a node to be a descendant of itself)
 
+// getBalancedTree
+// This function should return a balanced version of the binary search tree
+
 const BinarySearchTreeNode = require('./Binary-search-tree-node');
 const Queue = require('../queue/Queue');
 const Stack = require('../stack/Stack');
@@ -421,6 +424,43 @@ class BinarySearchTree {
 
     return data;
   }
+
+  getBalancedTree(node = this.root) {
+    if (!node) return node;
+
+    const sortedData = this.depthFirstSearchInOrder(node);
+
+    function createNodeHelper(start, end) {
+      const middle = Math.floor((start + end) / 2);
+      indexes.enqueue([start, middle - 1]);
+      indexes.enqueue([middle + 1, end]);
+      return new BinarySearchTreeNode(sortedData[middle]);
+    }
+
+    const indexes = new Queue();
+    const newRoot = createNodeHelper(0, sortedData.length - 1);
+
+    const treeNodes = new Queue();
+    treeNodes.enqueue(newRoot);
+
+    while (indexes.size) {
+      const [leftStart, leftEnd] = indexes.dequeue();
+      const [rightStart, rightEnd] = indexes.dequeue();
+      const currentNode = treeNodes.dequeue();
+
+      if (leftStart <= leftEnd) {
+        currentNode.left = createNodeHelper(leftStart, leftEnd);
+        treeNodes.enqueue(currentNode.left);
+      }
+
+      if (rightStart <= rightEnd) {
+        currentNode.right = createNodeHelper(rightStart, rightEnd);
+        treeNodes.enqueue(currentNode.right);
+      }
+    }
+
+    return new BinarySearchTree(newRoot);
+  }
 }
 
 const binarySearchTree1 = new BinarySearchTree();
@@ -457,5 +497,7 @@ console.log('InOrder:', binarySearchTree2.depthFirstSearchInOrder()); // [ 22, 4
 console.log('height:', binarySearchTree2.getHeight()); // 6
 console.log('minHeight:', binarySearchTree2.getMinHeight()); // 4
 console.log('Is balanced:', binarySearchTree2.isBalanced()); // false
+const balancedTree = binarySearchTree2.getBalancedTree();
+console.log('Is balanced:', balancedTree.isBalanced()); // true
 binarySearchTree2.invert();
 console.log('InOrder after the inversion:', binarySearchTree2.depthFirstSearchInOrder()); // [ 100, 95, 93, 90, 89, 88, 66, 49, 22 ]

@@ -375,6 +375,8 @@ class BinarySearchTree {
   }
 
   getBalancedTree(node = this.root) {
+    if (!node) return node;
+
     const sortedData = this.depthFirstSearchInOrder(node);
 
     function balance(start, end) {
