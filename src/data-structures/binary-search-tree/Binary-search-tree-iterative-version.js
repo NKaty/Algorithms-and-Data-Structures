@@ -74,8 +74,8 @@ const Queue = require('../queue/Queue');
 const Stack = require('../stack/Stack');
 
 class BinarySearchTree {
-  constructor() {
-    this.root = null;
+  constructor(root = null) {
+    this.root = root;
   }
 
   getHeight(node = this.root) {
@@ -499,5 +499,6 @@ console.log('minHeight:', binarySearchTree2.getMinHeight()); // 4
 console.log('Is balanced:', binarySearchTree2.isBalanced()); // false
 const balancedTree = binarySearchTree2.getBalancedTree();
 console.log('Is balanced:', balancedTree.isBalanced()); // true
+console.log('BreadthFirst after balancing:', balancedTree.breadthFirstSearch()); // [  89, 49, 93, 22, 66, 90, 95, 88, 100 ]
 binarySearchTree2.invert();
 console.log('InOrder after the inversion:', binarySearchTree2.depthFirstSearchInOrder()); // [ 100, 95, 93, 90, 89, 88, 66, 49, 22 ]
