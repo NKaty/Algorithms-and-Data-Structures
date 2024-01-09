@@ -68,6 +68,12 @@
 // getBalancedTree
 // This function should return a balanced version of the binary search tree
 
+// getTreeFormattedMatrix
+// This function should return a matrix that represents a formatted layout of the tree
+
+// printTree
+// This function should print a tree formatted matrix
+
 const BinarySearchTreeNode = require('./Binary-search-tree-node');
 
 class BinarySearchTree {
@@ -391,6 +397,39 @@ class BinarySearchTree {
     }
 
     return new BinarySearchTree(balance(0, sortedData.length - 1));
+  }
+
+  getTreeFormattedMatrix(node = this.root) {
+    const height = this.getHeight(node);
+    const width = 2 ** height - 1;
+    const matrix = Array.from({ length: height },
+      () => Array.from({ length: width }, () => ''));
+
+    function fillMatrixHelper(node, row, left, right) {
+      const middle = Math.floor((left + right) / 2);
+      matrix[row][middle] = `${node.data}`;
+
+      if (node.left) fillMatrixHelper(node.left, row + 1, left, middle - 1);
+      if (node.right) fillMatrixHelper(node.right, row + 1, middle + 1, right);
+    }
+
+    fillMatrixHelper(node, 0, 0, width - 1);
+
+    return matrix;
+  }
+
+  printTree(node = this.root) {
+    const maxNumberWidth = Math.max(
+      `${this.findMax(node).data}`.length,
+      `${this.findMin(node).data}`.length
+    );
+    const matrix = this.getTreeFormattedMatrix(node)
+      .map(row => row.map(item => {
+        const lengthDiff = maxNumberWidth - item.length;
+        const prefixLength = Math.ceil(lengthDiff / 2);
+        return ' '.repeat(prefixLength) + item + ' '.repeat(lengthDiff - prefixLength);
+      }));
+    matrix.forEach(row => console.log(row.join(' ')));
   }
 }
 
