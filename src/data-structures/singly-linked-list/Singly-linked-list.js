@@ -43,20 +43,26 @@
 
 // rotate
 // This function should rotate all the nodes in the list by some number passed in.
-// For instance, if your list looks like 1 -> 2 -> 3 -> 4 -> 5 and you rotate by 2,
+// For instance, if your list looks like 1 -> 2 -> 3 -> 4 -> 5, and you rotate by 2,
 // the list should be modified to 3 -> 4 -> 5 -> 1 -> 2.
 // The number passed in to rotate can be any integer (should work with negative indexes).
 // Time Complexity: O(N), where N is the length of the list.
 // Space Complexity: O(1)
 
-// Additionally, the following methods are implemented on the class:
-// find - accepts a parameter compareTo which can be a value for comparison or
-// a comparison function (must return true or false for each node), returns
+// find
+// This function accepts a parameter compareTo which can be a value for comparison or
+// a comparison function (must return true or false for each node), should return
 // the found node or its index.
 
-// iterate - accepts a callback function as a parameter, iterates through each node
-// in the list applying the callback function, returns array of values returned from
+// iterate
+// This function accepts a callback function as a parameter, iterates through each node
+// in the list applying the callback function, should return array of values returned from
 // the callback function
+
+// hasCycle
+// This function should determine if the linked list has a cycle in it
+// assuming that the linked list implementation might not have
+// this.tail reference to the last element
 
 const SinglyLinkedListNode = require('./Singly-linked-list-node');
 
@@ -251,6 +257,19 @@ class SinglyLinkedList {
     return arr;
   }
 
+  hasCycle() {
+    let fast = this.head;
+    let slow = this.head;
+
+    while (fast && fast.next) {
+      fast = fast.next.next;
+      slow = slow.next;
+      if (fast === slow) return true;
+    }
+
+    return false;
+  }
+
   print() {
     console.log(this.iterate());
   }
@@ -281,4 +300,7 @@ if (module.parent) {
   singlyLinkedList.rotate(-2);
   singlyLinkedList.print(); // [ 10, 5, 25, 20, 100 ]
   console.log(singlyLinkedList.find(25, true)); // 2
+  console.log(singlyLinkedList.hasCycle()); // false
+  singlyLinkedList.tail.next = singlyLinkedList.head.next;
+  console.log(singlyLinkedList.hasCycle()); // true
 }
