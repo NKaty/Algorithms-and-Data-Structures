@@ -64,6 +64,12 @@
 // assuming that the linked list implementation might not have
 // this.tail reference to the last element
 
+// detectCycle
+// This function should return the node where the cycle begins
+// or null if there is no cycle
+// assuming that the linked list implementation might not have
+// this.tail reference to the last element
+
 const SinglyLinkedListNode = require('./Singly-linked-list-node');
 
 class SinglyLinkedList {
@@ -270,6 +276,27 @@ class SinglyLinkedList {
     return false;
   }
 
+  detectCycle() {
+    let fast = this.head;
+    let slow = this.head;
+
+    while (fast && fast.next) {
+      fast = fast.next.next;
+      slow = slow.next;
+
+      if (fast === slow) {
+        slow = this.head;
+        while (slow !== fast) {
+          slow = slow.next;
+          fast = fast.next;
+        }
+        return slow;
+      }
+    }
+
+    return null;
+  }
+
   print() {
     console.log(this.iterate());
   }
@@ -301,6 +328,8 @@ if (module.parent) {
   singlyLinkedList.print(); // [ 10, 5, 25, 20, 100 ]
   console.log(singlyLinkedList.find(25, true)); // 2
   console.log(singlyLinkedList.hasCycle()); // false
+  console.log(singlyLinkedList.detectCycle()); // null
   singlyLinkedList.tail.next = singlyLinkedList.head.next;
   console.log(singlyLinkedList.hasCycle()); // true
+  console.log(singlyLinkedList.detectCycle().data); // 5
 }
