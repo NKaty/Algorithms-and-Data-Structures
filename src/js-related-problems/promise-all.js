@@ -17,6 +17,9 @@
  * @return {Promise<any>}
  */
 const promiseAll = function (functions) {
+  if (!functions.length) {
+    return Promise.resolve([]);
+  }
   const results = [];
   let resolvedPromisesCount = 0;
   return new Promise((resolve, reject) => {

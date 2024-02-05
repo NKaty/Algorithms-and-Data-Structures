@@ -8,6 +8,9 @@
  * @return {Promise<any>}
  */
 const promiseRace = function (functions) {
+  if (!functions.length) {
+    return new Promise(() => {});
+  }
   return new Promise((resolve, reject) => {
     functions.forEach(fn => {
       fn().then(result => resolve(result)).catch(reject);
